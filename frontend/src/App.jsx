@@ -1,54 +1,76 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './contexts/AuthContext.jsx';
+import { NotificationProvider } from './contexts/NotificationContext.jsx';
+import ToastProvider from './components/ui/Toast.jsx';
+import AppLayout from './components/layout/AppLayout.jsx';
+
+// Views
+import Login from './views/Login.jsx';
+import Register from './views/Register.jsx';
 import Dashboard from './views/Dashboard.jsx';
 import KanbanBoard from './views/KanbanBoard.jsx';
-import PitchDeck from './PitchDeck';
+import TeamsList from './views/TeamsList.jsx';
+import TeamDetail from './views/TeamDetail.jsx';
+import Profile from './views/Profile.jsx';
+import Notifications from './views/Notifications.jsx';
+import AIInsights from './views/AIInsights.jsx';
+import Settings from './views/Settings.jsx';
+import PitchDeck from './PitchDeck.jsx';
 
-// Simple mockup for auth context
-const AuthContext = React.createContext({ user: { uid: '123' } });
+function ProtectedRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
+  if (loading) return <div className="loading-screen">Loading...</div>;
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  return children;
+}
 
-function App() {
-  const [showPitchDeck, setShowPitchDeck] = useState(false);
+function PublicRoute({ children }) {
+  const { isAuthenticated, loading } = useAuth();
+  if (loading) return <div className="loading-screen">Loading...</div>;
+  if (isAuthenticated) return <Navigate to="/" replace />;
+  return children;
+}
+
+function AppRoutes() {
+  const [showPitch, setShowPitch] = React.useState(false);
 
   return (
-    <AuthContext.Provider value={{ user: { uid: '123' } }}>
-      <BrowserRouter>
-        <div className="app" role="main" aria-label="Skill Hub Application">
-          <header className="glass-panel header" role="banner" style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <h1>Skill Hub</h1>
-              <p>Team Coordination Platform</p>
-            </div>
-            <button 
-              onClick={() => setShowPitchDeck(true)}
-              className="status-badge status-badge--done"
-              style={{ cursor: 'pointer', padding: '0.8rem 1.5rem', fontSize: '1.1rem', border: 'none', fontWeight: 'bold' }}
-            >
-              📺 Pitch Deck
-            </button>
-            <nav style={{ marginTop: '15px', display: 'flex', gap: '15px', justifyContent: 'center' }}>
-              <a href="/" style={{ color: 'var(--accent)', fontWeight: 'bold' }}>Dashboard</a>
-              <a href="/tasks" style={{ color: 'var(--accent)', fontWeight: 'bold' }}>Tasks Board</a>
-            </nav>
-          </header>
+    <>
+      <Routes>
+        {/* Public routes */}
+        <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+        <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+        <Route path="/pitch" element={<PitchDeck />} />
 
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/tasks" element={<KanbanBoard />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </main>
-          
-          <footer className="glass-panel footer" role="contentinfo" style={{ marginTop: '20px' }}>
-            <p>Built by <strong>Abishek Maharajan</strong> · AI-Fullstack Engineer</p>
-          </footer>
+        {/* Protected routes with layout */}
+        <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/tasks" element={<KanbanBoard />} />
+          <Route path="/teams" element={<TeamsList />} />
+          <Route path="/teams/:id" element={<TeamDetail />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/insights" element={<AIInsights />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
 
-          {showPitchDeck && <PitchDeck onClose={() => setShowPitchDeck(false)} />}
-        </div>
-      </BrowserRouter>
-    </AuthContext.Provider>
+        {/* Catch-all */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+      <ToastProvider />
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <NotificationProvider>
+          <AppRoutes />
+        </NotificationProvider>
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}
