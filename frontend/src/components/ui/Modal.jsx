@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import Icon from './Icon.jsx';
 
-/**
- * Accessible modal overlay with ESC close, focus trap, and backdrop click.
- */
 export default function Modal({ isOpen, onClose, title, children, size = 'medium' }) {
   const overlayRef = useRef(null);
   const contentRef = useRef(null);
@@ -14,9 +12,13 @@ export default function Modal({ isOpen, onClose, title, children, size = 'medium
     };
     document.addEventListener('keydown', handleKey);
     document.body.style.overflow = 'hidden';
-    // Focus first focusable element
-    const focusable = contentRef.current?.querySelector('input, button, textarea, select, [tabindex]');
-    focusable?.focus();
+    
+    // Focus first focusable element gracefully
+    setTimeout(() => {
+      const focusable = contentRef.current?.querySelector('input, button, textarea, select, [tabindex]:not([tabindex="-1"])');
+      if (focusable) focusable.focus();
+    }, 100);
+
     return () => {
       document.removeEventListener('keydown', handleKey);
       document.body.style.overflow = '';
@@ -29,16 +31,36 @@ export default function Modal({ isOpen, onClose, title, children, size = 'medium
     if (e.target === overlayRef.current) onClose?.();
   };
 
-  const sizeClass = `modal--${size}`;
+  const sizeClasses = {
+    small: 'max-w-md',
+    medium: 'max-w-2xl',
+    large: 'max-w-4xl'
+  };
 
   return (
-    <div className={`modal-overlay ${sizeClass}`} ref={overlayRef} onClick={handleBackdropClick} role="dialog" aria-modal="true" aria-label={title}>
-      <div className="modal-content glass-panel" ref={contentRef}>
-        <div className="modal-header">
-          <h2 className="modal-title">{title}</h2>
-          <button className="modal-close" onClick={onClose} aria-label="Close modal">✕</button>
+    <div 
+      className="fixed inset-0 bg-[#0a0a14]/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto animate-in fade-in duration-200" 
+      ref={overlayRef} 
+      onClick={handleBackdropClick} 
+      role="dialog" 
+      aria-modal="true" 
+      aria-label={title}
+    >
+      <div 
+        className={`glass-panel-heavy w-full ${sizeClasses[size]} rounded-2xl border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform animate-in zoom-in-95 duration-200`} 
+        ref={contentRef}
+      >
+        <div className="flex justify-between items-center p-6 border-b border-white/5 bg-white/5 rounded-t-2xl">
+          <h2 className="text-xl font-bold text-white">{title}</h2>
+          <button 
+            className="w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors" 
+            onClick={onClose} 
+            aria-label="Close modal"
+          >
+            <Icon name="close" className="text-[20px]" />
+          </button>
         </div>
-        <div className="modal-body">
+        <div className="p-6 max-h-[80vh] overflow-y-auto custom-scrollbar">
           {children}
         </div>
       </div>

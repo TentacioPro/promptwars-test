@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(108, 99, 255, 0.2);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#0d1c2d",
+                      "on-surface-variant": "#c7c4d8",
+                      "on-tertiary-container": "#461f00",
+                      "surface-container-high": "#1c2b3c",
+                      "tertiary": "#ffb785",
+                      "tertiary-fixed": "#ffdcc6",
+                      "tertiary-fixed-dim": "#ffb785",
+                      "surface-container-highest": "#273647",
+                      "on-tertiary-fixed": "#301400",
+                      "primary-fixed-dim": "#c4c0ff",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed": "#e3dfff",
+                      "on-background": "#d4e4fa",
+                      "inverse-on-surface": "#233143",
+                      "surface-variant": "#273647",
+                      "surface-tint": "#c4c0ff",
+                      "surface-container-lowest": "#010f1f",
+                      "inverse-surface": "#d4e4fa",
+                      "secondary-fixed": "#e2dfff",
+                      "outline": "#918fa1",
+                      "on-secondary": "#1c00a6",
+                      "on-primary-fixed-variant": "#3622ca",
+                      "surface-bright": "#2c3a4c",
+                      "outline-variant": "#464555",
+                      "on-tertiary": "#502500",
+                      "on-error": "#690005",
+                      "surface": "#051424",
+                      "surface-dim": "#051424",
+                      "on-secondary-fixed-variant": "#3529c2",
+                      "tertiary-container": "#db761f",
+                      "background": "#051424",
+                      "secondary-container": "#372cc5",
+                      "primary": "#c4c0ff",
+                      "on-surface": "#d4e4fa",
+                      "error": "#ffb4ab",
+                      "primary-container": "#8781ff",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-primary-container": "#1b0091",
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#0e006a",
+                      "on-secondary-container": "#b3b1ff",
+                      "inverse-primary": "#4f44e2",
+                      "surface-container": "#122131",
+                      "secondary": "#c3c0ff",
+                      "on-primary-fixed": "#100069",
+                      "on-primary": "#2000a4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-margin": "24px",
+                      "base": "4px",
+                      "sm": "16px",
+                      "lg": "32px",
+                      "xs": "8px",
+                      "md": "24px",
+                      "xl": "48px",
+                      "gutter": "20px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "h3": ["Inter"],
+                      "subtitle": ["Inter"],
+                      "h1": ["Inter"],
+                      "body-md": ["Inter"],
+                      "h2": ["Inter"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "subtitle": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Main Dashboard Background (Blurred Content) -->
+<div class="fixed inset-0 z-0 blur-xl opacity-40 overflow-hidden pointer-events-none">
+<header class="flex justify-between items-center px-6 py-3 h-16 bg-[#0a0a14]/80 border-b border-white/10">
+<div class="text-2xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Skill Hub</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-high"></div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high"></div>
+</div>
+</header>
+<main class="p-md grid grid-cols-4 gap-md">
+<div class="h-96 glass-panel rounded-xl"></div>
+<div class="h-96 glass-panel rounded-xl"></div>
+<div class="h-96 glass-panel rounded-xl"></div>
+<div class="h-96 glass-panel rounded-xl"></div>
+</main>
+</div>
+<!-- Background Dimming Overlay -->
+<div class="fixed inset-0 bg-black/60 z-10"></div>
+<!-- Side Panel -->
+<aside class="fixed top-0 right-0 h-screen w-full md:w-[40%] z-20 glass-panel shadow-2xl flex flex-col border-l border-white/10">
+<!-- Header -->
+<div class="p-md flex justify-between items-start border-b border-white/5">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface">Build Login Page</h2>
+</div>
+<div class="flex items-center gap-xs">
+<button class="p-xs text-error hover:bg-error/10 rounded-lg transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:bg-white/5 rounded-lg transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-md space-y-lg">
+<!-- Meta Row -->
+<div class="flex flex-wrap gap-sm">
+<span class="px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-label-caps font-label-caps flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                    In Progress
+                </span>
+<span class="px-3 py-1 rounded-full bg-tertiary-container text-on-tertiary-fixed text-label-caps font-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+                    High
+                </span>
+</div>
+<!-- Status Control -->
+<div class="space-y-xs">
+<p class="text-label-caps font-label-caps text-on-surface-variant">Status</p>
+<div class="grid grid-cols-4 bg-surface-container-lowest p-1 rounded-xl border border-white/5">
+<button class="py-2 text-subtitle font-subtitle text-on-surface-variant hover:text-on-surface transition-colors">To Do</button>
+<button class="py-2 text-subtitle font-subtitle bg-primary text-on-primary rounded-lg shadow-lg">In Progress</button>
+<button class="py-2 text-subtitle font-subtitle text-on-surface-variant hover:text-on-surface transition-colors">Review</button>
+<button class="py-2 text-subtitle font-subtitle text-on-surface-variant hover:text-on-surface transition-colors">Done</button>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-xs">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase tracking-widest">Description</p>
+<p class="text-body-md font-body-md text-on-surface-variant leading-relaxed">
+                    Implement the login flow using React and Firebase. Ensure the glassmorphism styling matches the design system and WCAG accessibility standards are met.
+                </p>
+</div>
+<!-- Due Date & Skills -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase tracking-widest">Due date</p>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<span class="font-subtitle text-subtitle">May 15, 2026</span>
+</div>
+</div>
+<div class="space-y-xs">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase tracking-widest">Required Skills</p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-2 py-1 rounded-sm bg-primary/10 text-primary text-label-caps font-label-caps">React</span>
+<span class="px-2 py-1 rounded-sm bg-primary/10 text-primary text-label-caps font-label-caps">Firebase Auth</span>
+<span class="px-2 py-1 rounded-sm bg-primary/10 text-primary text-label-caps font-label-caps">CSS</span>
+</div>
+</div>
+</div>
+<!-- AI Assignee Suggestion -->
+<div class="ai-glow glass-panel rounded-xl p-sm space-y-sm border-primary/20 bg-primary/5">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h4 class="font-subtitle text-subtitle font-bold text-white">AI Assignee Suggestion</h4>
+</div>
+<button class="text-xs px-2 py-1 rounded bg-primary text-on-primary font-bold hover:brightness-110 transition-all">Find best match</button>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-xs rounded-lg bg-white/5 border border-white/5">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Avatar" data-alt="A professional headshot of a software developer with short dark hair and modern glasses, smiling confidently against a soft-focus tech office background. The lighting is crisp and cool, emphasizing a clean and high-performance professional aesthetic consistent with a dark-mode UI dashboard design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiKKRCkcflvFkDJ59b-duUUFfpFr2uRnXFjw1n1PWbWH_szbT57kmhyseIoDQE7uoM0ZbJJkxhSHueoSRglslzDspuU_SHH0YsTpX7im5USw7WsZ8e-NqKAigFBvkVVZCRwEY9y9hv_Ob4_8bNi2ci3E3DHPFLu_iigq9qNC8k5G5CUukS_PqqKWFT-N7oDhEx40YKhXKXs2kZTX1YjSADy0pmVgpSTlLSxW_W11mwnN0VX9by_u8k0JtnCL2eapyLMUxsPSVSOWmm"/>
+</div>
+<div>
+<p class="text-subtitle font-semibold text-white">Alex</p>
+<p class="text-[10px] text-on-surface-variant">Expert in Firebase Auth</p>
+</div>
+</div>
+<span class="text-primary font-bold text-subtitle">92%</span>
+</div>
+<div class="flex items-center justify-between p-xs rounded-lg bg-white/5 border border-white/5 opacity-70">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Avatar" data-alt="A portrait of a creative professional with a friendly expression and stylish attire, set against a dark architectural background with subtle blue neon accents. The image follows a modern dark-mode aesthetic with vibrant details and soft depth-of-field effects, matching an AI-driven professional platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdDRgedXsJDeT1q1VOkWQ2QLlSi17GJkfCfreQzh39vPUclH5iOYxuqZjxu2wVyGw2bOIaH2PKpvOrc4YdC2fAbmkHX0QSVqZ908AALFijIWW8z7K5_hcCNGeiDWIkgpdRqAKc6d2yK1gyKJ1PBAAaVihw3PTE7bFqkesM9nnqNNCfV4qclsHX-BeSGinxtFehyPM_MYSMOqmkqSWPRichyNRs3x-GbMt01kwNDEvJ6HMXKzfjl6JItkeAfCBOkdRsPH8si_zMH5Tc"/>
+</div>
+<div>
+<p class="text-subtitle font-semibold text-white">Jordan</p>
+<p class="text-[10px] text-on-surface-variant">Senior React Developer</p>
+</div>
+</div>
+<span class="text-primary font-bold text-subtitle">85%</span>
+</div>
+</div>
+</div>
+<!-- Attachments -->
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase tracking-widest">Attachments (2)</p>
+<button class="text-primary text-subtitle flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">upload</span> Upload
+                    </button>
+</div>
+<div class="space-y-xs">
+<div class="flex items-center justify-between p-sm glass-panel rounded-lg hover:bg-white/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">picture_as_pdf</span>
+<span class="text-subtitle font-subtitle text-on-surface">design_spec.pdf</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</div>
+<div class="flex items-center justify-between p-sm glass-panel rounded-lg hover:bg-white/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">folder_zip</span>
+<span class="text-subtitle font-subtitle text-on-surface">logo_assets.zip</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">download</span>
+</div>
+</div>
+</div>
+<!-- Comments -->
+<div class="space-y-md">
+<p class="text-label-caps font-label-caps text-on-surface-variant uppercase tracking-widest">Comments (3)</p>
+<div class="space-y-lg">
+<!-- Comment 1 -->
+<div class="flex gap-sm">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Sarah" data-alt="A profile image of a young woman with a focused and professional expression, featuring warm studio lighting and a deep navy minimalist background. The visual style is sleek and optimized for a dark-themed AI application, focusing on professional reliability and clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9YM2KUvB4qa1jgFXH3j-mug5Tn9b1TYC_8s6C1Soe8FccBAhfBvD2kw_C-RTN5LhE8OZxuY60LkOgojQnl9ROpyr5Dauv4yqzat3dkZZ-tN--A8iJhGjBZ29O3nINVq8cGE5-OVnpnhgcyBWeBnvV5QdmbkVSAiS0sxB5VqHq6Jpez8a3_HQ6hhXYQsU1vkVi8bG6846ebx_axjJwaA9RGoFgdZJWvdbHxr-cFfyW4gRgq6yMXMtu2Pph08cwcd7iZWbxUfSqVPs"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-subtitle text-white">Sarah Chen</span>
+<span class="text-[10px] text-on-surface-variant">2h ago</span>
+</div>
+<p class="text-subtitle text-on-surface-variant">I've added the Firebase credentials to the vault. Let me know if you need access.</p>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="flex gap-sm">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Marcus" data-alt="A portrait of a male tech lead with a thoughtful and calm demeanor, dressed in a minimal black shirt. The background is a dark, glassmorphic office scene with soft indigo highlights. The image captures a sense of expertise and calm authority, fitting for a futuristic skill management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGLGDa6peV4AJd0gKZhRTDihgCBzaXP5c-dJA7C3RnBiQXgZAmmmmHx8MvIhjHiQE7DYrXf6iHbMmQ2W4ZVbfVbI4ycyv5nDbx2EJIDPkA1JlPVVUuMP7ayhga9DAOKh05SnIhcomjSXObaXhHVkv79y0_xZLLcs6iC9w5qgO35OwFZcbVC3_PkXkEl5HhVro0Jd6q4mf-UoL6Q_6slrECMS-IaBk8Xv7Fit3yp7SxXrKgTRauTfNRiGn5eHkbNSQKOR8c-oiKUPzH"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-subtitle text-white">Marcus Vogt</span>
+<span class="text-[10px] text-on-surface-variant">1h ago</span>
+</div>
+<p class="text-subtitle text-on-surface-variant">The glassmorphism blur should be exactly 12px as per the design system rules.</p>
+</div>
+</div>
+<!-- Comment 3 -->
+<div class="flex gap-sm">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Alex" data-alt="A professional headshot of a software developer with short dark hair and modern glasses, smiling confidently against a soft-focus tech office background. The lighting is crisp and cool, emphasizing a clean and high-performance professional aesthetic consistent with a dark-mode UI dashboard design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKcqEOc3v3OXbOqMG7BpDpiuGqOZMu42EG9XEe7BLfTXkPSYo1nLqGKs_S9hW-RtPnu_89iAdWIHNFxOoZfo5nlwUxfGYMS-EtLU9DrqZIUXpAjfXQNlBCpkrzvSQi9_wBKiNBzhs9NVs03yoSKNDqWgr4sXdfbEA-W8blTtjf0jRKmo4KVYWWw8t8GQ9d5DaPQPCf5VFaQz8mum9L-Z2q7dR9LU1VKetMA2KzrX1ao0EQL5sZMEFe87bjrP_G-fFakHnwaHg80y5W"/>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-subtitle text-white">Alex</span>
+<span class="text-[10px] text-on-surface-variant">Just now</span>
+</div>
+<p class="text-subtitle text-on-surface-variant">On it. Applying the updates now.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Input -->
+<div class="p-md bg-surface-container-lowest border-t border-white/10">
+<div class="flex items-center gap-sm">
+<div class="flex-1 bg-surface p-1 rounded-xl border border-white/10 flex items-center px-sm gap-sm focus-within:border-primary transition-all">
+<input class="bg-transparent border-none focus:ring-0 text-on-surface placeholder-on-surface-variant w-full py-2" placeholder="Write a comment..." type="text"/>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-md">sentiment_satisfied</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined text-md">attach_file</span></button>
+</div>
+</div>
+<button class="bg-primary text-on-primary w-10 h-10 rounded-xl flex items-center justify-center shadow-lg hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</aside>
+</body></html>

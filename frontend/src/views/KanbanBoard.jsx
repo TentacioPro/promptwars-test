@@ -8,7 +8,7 @@ import TaskDetail from '../components/tasks/TaskDetail.jsx';
 import TaskFormModal from '../components/tasks/TaskFormModal.jsx';
 import TaskList from './TaskList.jsx';
 import Skeleton from '../components/ui/Skeleton.jsx';
-import { Plus, LayoutGrid, List } from 'lucide-react';
+import Icon from '../components/ui/Icon.jsx';
 import toast from 'react-hot-toast';
 
 const STATUSES = ['todo', 'in_progress', 'review', 'done'];
@@ -34,7 +34,6 @@ export default function KanbanBoard() {
   async function handleDragEnd(event) {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
-    // over.id is the column status
     const taskId = active.id;
     const newStatus = over.id;
     try {
@@ -53,29 +52,46 @@ export default function KanbanBoard() {
   }
 
   return (
-    <div className="kanban-page">
-      <div className="kanban-page__header">
-        <h1 className="page-title">Tasks</h1>
-        <div className="kanban-page__controls">
-          <button className={`btn btn--sm ${viewMode === 'kanban' ? 'btn--primary' : 'btn--ghost'}`} onClick={() => setSearchParams({})}>
-            <LayoutGrid size={16} /> Board
-          </button>
-          <button className={`btn btn--sm ${viewMode === 'list' ? 'btn--primary' : 'btn--ghost'}`} onClick={() => setSearchParams({ view: 'list' })}>
-            <List size={16} /> List
-          </button>
-          <button className="btn btn--primary btn--sm" onClick={() => setShowCreateModal(true)}>
-            <Plus size={16} /> New Task
+    <div className="flex flex-col h-full">
+      {/* Kanban Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+        <div>
+          <h1 className="font-h1 text-[40px] leading-[1.2] font-bold text-white tracking-tight">Tasks</h1>
+          <p className="text-slate-400 font-subtitle text-sm mt-1">Manage and coordinate project sprints with AI-assisted priority routing.</p>
+        </div>
+        
+        <div className="flex items-center gap-4">
+          <div className="bg-white/5 rounded-xl p-1 flex border border-white/10 backdrop-blur-md">
+            <button 
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${viewMode === 'kanban' ? 'bg-[#6c63ff] text-white' : 'text-slate-400 hover:text-white'}`}
+              onClick={() => setSearchParams({})}
+            >
+              <Icon name="grid_view" className="text-[18px]" /> Board
+            </button>
+            <button 
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${viewMode === 'list' ? 'bg-[#6c63ff] text-white' : 'text-slate-400 hover:text-white'}`}
+              onClick={() => setSearchParams({ view: 'list' })}
+            >
+              <Icon name="list" className="text-[18px]" /> List
+            </button>
+          </div>
+          
+          <button 
+            className="bg-[#6c63ff] hover:bg-[#5a52e0] text-white px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all active:scale-95 shadow-[0_4px_20px_rgba(108,99,255,0.2)]"
+            onClick={() => setShowCreateModal(true)}
+          >
+            <Icon name="add" /> New Task
           </button>
         </div>
       </div>
 
       {loading ? (
-        <div style={{ display: 'flex', gap: 16 }}>
-          {STATUSES.map((s) => <Skeleton key={s} variant="card" height={300} width={250} />)}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {STATUSES.map((s) => <Skeleton key={s} className="min-h-[716px] rounded-xl" />)}
         </div>
       ) : (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-          <div className="kanban-board">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 h-full items-start">
             {STATUSES.map((status) => (
               <KanbanColumn
                 key={status}

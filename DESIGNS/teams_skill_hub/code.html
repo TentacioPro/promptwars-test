@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a14;
+            color: #d4e4fa;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .indigo-glow {
+            box-shadow: 0 0 20px rgba(108, 99, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#c3c0ff",
+                      "on-surface": "#d4e4fa",
+                      "on-secondary": "#1c00a6",
+                      "on-tertiary": "#502500",
+                      "primary-fixed": "#e3dfff",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "outline": "#918fa1",
+                      "on-primary-fixed-variant": "#3622ca",
+                      "on-background": "#d4e4fa",
+                      "secondary-container": "#372cc5",
+                      "tertiary-container": "#db761f",
+                      "background": "#051424",
+                      "inverse-on-surface": "#233143",
+                      "surface-container-highest": "#273647",
+                      "inverse-surface": "#d4e4fa",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#0e006a",
+                      "surface-variant": "#273647",
+                      "on-tertiary-fixed": "#301400",
+                      "primary-fixed-dim": "#c4c0ff",
+                      "on-surface-variant": "#c7c4d8",
+                      "on-primary-fixed": "#100069",
+                      "primary": "#c4c0ff",
+                      "surface-tint": "#c4c0ff",
+                      "tertiary-fixed-dim": "#ffb785",
+                      "tertiary": "#ffb785",
+                      "error-container": "#93000a",
+                      "surface-dim": "#051424",
+                      "surface-container-low": "#0d1c2d",
+                      "secondary-fixed": "#e2dfff",
+                      "on-primary": "#2000a4",
+                      "surface": "#051424",
+                      "on-secondary-fixed-variant": "#3529c2",
+                      "surface-bright": "#2c3a4c",
+                      "primary-container": "#8781ff",
+                      "on-secondary-container": "#b3b1ff",
+                      "on-primary-container": "#1b0091",
+                      "on-error": "#690005",
+                      "surface-container-lowest": "#010f1f",
+                      "secondary": "#c3c0ff",
+                      "inverse-primary": "#4f44e2",
+                      "tertiary-fixed": "#ffdcc6",
+                      "surface-container-high": "#1c2b3c",
+                      "on-tertiary-container": "#461f00",
+                      "outline-variant": "#464555",
+                      "surface-container": "#122131",
+                      "on-error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "lg": "32px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "xl": "48px",
+                      "container-margin": "24px",
+                      "sm": "16px",
+                      "gutter": "20px"
+              },
+              "fontFamily": {
+                      "subtitle": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "h3": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "h2": ["Inter"],
+                      "h1": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "subtitle": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="min-h-screen bg-[#0a0a14] overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 z-50 w-full h-16 bg-[#0a0a14]/80 backdrop-blur-md border-b border-white/10 flex justify-between items-center px-6">
+<div class="flex items-center gap-6">
+<div class="text-xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-500">psychology</span>
+                Skill Hub
+            </div>
+<div class="hidden md:flex items-center bg-white/5 border border-white/10 rounded-full px-4 py-1.5 gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-sm text-on-surface placeholder-slate-400 w-48" placeholder="Search teams..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-indigo-400 transition-colors p-2 rounded-full hover:bg-white/5">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full border border-indigo-500/30 overflow-hidden">
+<img alt="User Profile" data-alt="A professional headshot of a user with a clean, tech-focused background. The lighting is soft and modern, matching the indigo and dark navy theme of the Skill Hub platform. The user is smiling slightly, conveying confidence and accessibility in a corporate AI-driven workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdFZKU9gNTXXWVRmn7mqkiFqTFIPcn9D-DfW0EPBkvsMSvtEF5w1yDu4GWc2Zjv19KK7EDE1geoRrS8N4qO79fkph_zynigkStQEa4Lhtod6yBMExsEHiVySaDuQJ1fmlXssFkEGjVDjvQXHrK8kiC2tx_tPOaS6Aaj4Xwame3iKfOe-_QEV2vFtywY6Vi2fWf2WPGVzvS-bDXN_1jbaao0uzGL1cFcjcFjEdkpsWlvCeqGc_9XEhj8EfUCUUK2WKZsex8Q0QhnBvo"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-[#0a0a14]/60 backdrop-blur-xl border-r border-white/10 flex flex-col p-4 pt-20 z-40 hidden md:flex">
+<div class="space-y-1 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-indigo-400 bg-indigo-500/10 rounded-lg font-semibold active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-sm">Teams</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-inter text-sm">Skills</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-inter text-sm">Insights</span>
+</a>
+</div>
+<div class="pt-4 border-t border-white/10 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-inter text-sm">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:pl-64 pt-24 px-container-margin pb-xl">
+<!-- Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-lg">
+<h1 class="font-h1 text-h1 text-white">Teams</h1>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-white/10 rounded-lg bg-transparent text-white hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="person_add">person_add</span>
+<span class="font-subtitle text-subtitle">Join Team</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#6c63ff] to-[#5a54e6] text-white shadow-lg shadow-indigo-500/20 hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span class="font-subtitle text-subtitle">Create Team</span>
+</button>
+</div>
+</div>
+<!-- Team Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<div class="glass-panel indigo-glow rounded-xl p-md flex flex-col gap-sm transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-xs">
+<h2 class="font-h3 text-h3 text-white">Frontend Squad</h2>
+<p class="font-subtitle text-subtitle text-slate-400 line-clamp-2">Building the next generation of Skill Hub's interface using modern frameworks.</p>
+</div>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">group</span>
+<span>5 members</span>
+</div>
+<div class="flex -space-x-2 mt-xs">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A futuristic circular avatar of a software developer in a dark room illuminated by neon blue computer monitors. The developer is wearing sleek, modern headphones and is focused on a screen, perfectly capturing the high-tech, glassmorphic aesthetic of a premier AI development environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_MtXm5830HCQECzOkVJPcR0G8sTKJR9-CjExYQPFbfvmjpyoFv3JG4GbPcIa1uB-yyY-Vx0nSofiFxCUgd08AxduhH91RAtgfyyfNQCL46x1nHyCGbtddBtFCpF2DY__kMbkzkJ9t98ws2_30HmxycxTvQfPgz2VlUEe2iUB7SbmLeD-o36uh9d3u09o_JoQPZryoHDfitFWBN8qzn57aN_O9bd6kBAXq5q5gz0UoJTF1mraN5GF5t_Q2iDMl5PqyGtuoXzDi2KMy"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A clean, minimalist circular portrait of a professional woman with sharp business attire. The background features a subtle indigo gradient with glassmorphic transparency effects. The overall mood is collaborative and sophisticated, reflecting the elite team structure of a modern tech organization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNL7EOcb-VmstTW0k0u8v8ygQ_-XllIZZJebEtz9UlohsOrOIPCbLIQQSyVeiETi7wncYnc93Ck_eDlDx5JuU6ZbpDQ8JN0ug45SQz6QzmO0mKneud48cWvKguuJB_4Tyy9dURgvcce69f1HyMgNkQTKVXCc8ODFmBWuBNeeO5P2j4SXVE2db0aFQe5uYiMbDstsLEB83MiQnxSMnD-atYcg0btCEZGRgLPFSEvfNppjyXFKqJBoOhGG_hKpdknnHrfpjfl-bz2zAN"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A circular profile picture of a young male designer with a creative and approachable look. He is set against a dark, tech-oriented backdrop with soft, glowing geometric shapes. The lighting is low-key with indigo accents to maintain visual consistency with the dark-mode dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIBcjaySXaL1LjvbKvPbTSVvusbqsLzgP0kOUHxzNi0JXedeC61mhABmyqhe6hZo6QFiSzTq_LyrS_yWFc3FCuRup7I7-txamaD_QKts4q4pWYOw5XIQr24bYhwrVccvXhJBbQKZZeUwaA3bvzNPQt3YX7ONhLX5jTxHS77VqWxXGoPNyGpfXf1w6clQpXnShJZjGMDNAiBBjyEY3wiyU3pQMaqolL6ZeiWneCwR_wDaXU3UxS59ZJgMPkcwOVw2yYwpPrzK1pLLBR"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A high-quality circular avatar showing a senior technical lead. The lighting is dramatic, highlighting the contours of the face against a void-black background with a soft indigo aura. The image represents leadership and deep expertise in a high-performance technical team." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCJhZ7vvHdPVR7HLG4vE5XGov7EWt2glrvgef-vk5qMMC-SEK27eQLhfXBvuDSJyxkq-5Hb9gTmfLvAjeils-NKUG3Tzmtsk4TBs27b3j22BasQfzkuesVH8GaaG5Qxox3cSMwFUiuupTqEsE2c4rfBJVjlErEUGI_BgRglyE5yUXx6tTZ-8_0xVz9nUdTkuqauwD2yfquKugABfJn73qsPk1ldpHkuXQO-PygUfwUB1MmAGseHc__3muskMcehJyf32uPTCIVlrcR"/>
+<div class="w-8 h-8 rounded-full border-2 border-[#0a0a14] bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-slate-400">+1 more</div>
+</div>
+<div class="mt-md pt-md border-t border-white/5 flex justify-between items-center">
+<span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-label-caps font-label-caps">Owner</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-xl p-md flex flex-col gap-sm transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-xs">
+<h2 class="font-h3 text-h3 text-white">Backend Core</h2>
+<p class="font-subtitle text-subtitle text-slate-400 line-clamp-2">Managing the scalable architecture and microservices that power the Skill Hub engine.</p>
+</div>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">group</span>
+<span>8 members</span>
+</div>
+<div class="flex -space-x-2 mt-xs">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A circular tech avatar of a database specialist in a dark, atmospheric setting. The image is bathed in soft blue and indigo light, emphasizing a high-performance, precision-oriented work environment. The aesthetic is futuristic, clean, and perfectly aligned with the Skill Hub dark-mode design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtkxCyrMyllUWLSOL_8_GsH8KpkZMUoJg7jud1e1UMaFy6hmS2e9ijP1ANbJc0txZBZdjnf1L2fFP8Qh6U0V933vdnjpjtAK09ABa9XTShILYk9HNy9X_z8b9XQeUvYR4OSVAHInszDZaiyPWR22hcwzh1s_dV3nruUTZIirbN96-0Yg2xuoMPPwHxOcV6QyfeunrhYnVHkA8YDFZf79o7wsjf0q7rNY5zX-Us1Slm9AR55MmrD07dlKJh2-MwbWpFVg_1hotv0gNb"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A sophisticated circular profile photo of a cloud architect. The background consists of translucent glass layers and deep navy shadows. The user is dressed in a smart-casual tech outfit, looking ready for complex problem-solving in an AI-driven ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJpMfq76wd2O283j3I_YPIweE7y9787MP_pdAsMpeVhcQADmhLWqzF68dC88EL4sifsaawuCxCE46wS32b0PVHM8o-1QUVdgdl_c5M5eYxJQ7HkB1y5Ee9Fx8wgx-UlkAwNfgS-9aRe4t_lcQZxjYIRuPUYjiQ1cAa6oE8PgSqKoeqgaZa4-ZR-7z2WKOvMFOaHmXg5gNBS6O6Bo2xHMgdBfVzaztRBDQPzCkuyGGmz2ATPBst-0vr5qOK-Omhbk8wNdaiNm0GJ5SS"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A minimalist circular portrait of a system administrator. The lighting is crisp and cool, featuring vibrant indigo accents on a charcoal background. The visual style is consistent with high-end digital workspace graphics, conveying reliability and advanced technical capability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnCAAnJXroQHRf7o-p1fms2IRQ0diGsR66CgG3uUzuEsIAkUT0-40X4KCe08DTjT0lMaIQ9E-tIXKtXU8rzEBbG3uTrbyn7gJ49ix4lNfmsvzL73-BgSFaAG0tWJUMQ39w5Vlg5ClA4Wey3ki9dYyvDHB5Bgl2B35HUBjpJcMZP3OWi3YogF9FY0nY5HBar7pbFsY2cBXj9Oj-S3OwvxRv0Rx1eeVZPlf-KpHMwhZMUQVo8q-EvF9qQX34CCxwCbRoC1Is6n6rm9Mv"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A circular avatar of a software engineer with a modern, technical aesthetic. The scene is lit by the glow of multiple screens, casting soft indigo and violet light on the subject. The image represents the collaborative and high-tech spirit of a backend core team." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQVmPcYyrUWLjnYMV7PtEpNady40lQy_D0I_eQV5qtq06ACD-w0vbk_EaROoHuowLx-vPtn7KMY4xdXBD8LX-hptn7YJ8q3kt7C1gLZkrYD46cygIcOyE5hVQZIAlo3udpPxffeUlpf0e9MVRbI-xvjbYG2RrukaIU1QTWV4pNvto-9NimK75Zm_86xTlplXmcb_rxoTsLtsxfx9kkgL3oQZX4VIjobxLfKSNbdyS5Di1kx5czrW-XXXAquoGFpknq0sVx5YNsTtA8"/>
+<div class="w-8 h-8 rounded-full border-2 border-[#0a0a14] bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-slate-400">+4 more</div>
+</div>
+<div class="mt-md pt-md border-t border-white/5 flex justify-between items-center">
+<span class="px-3 py-1 rounded-full bg-white/5 text-slate-400 text-label-caps font-label-caps">Member</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel rounded-xl p-md flex flex-col gap-sm transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-xs">
+<h2 class="font-h3 text-h3 text-white">AI Research</h2>
+<p class="font-subtitle text-subtitle text-slate-400 line-clamp-2">Pioneering new algorithms for skill mapping and coordination intelligence.</p>
+</div>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">group</span>
+<span>4 members</span>
+</div>
+<div class="flex -space-x-2 mt-xs">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A circular avatar depicting an AI researcher in a futuristic laboratory. The lighting is a blend of deep navy and electric indigo, highlighting advanced holographic interfaces in the background. The researcher appears focused and visionary, fitting for a team dedicated to pioneering new intelligence algorithms." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRjvj9YkYmOEc0CsaBQ_JkZfCloIE8oeolNPYcydqGC4RAP7g12gm8KEK3gTM-qLsmHs6bhKXJhtq4tHlSGWasJ0cuhnCEP49OFZx761SZuqdMcJmgDsKwCGpqTAgiJVW678NQpv0ebgRFCuniBLGYzMeZ_f0IyuLIeWtknIRajAx5isPcxq93SixUuvA3-vpGpaGWoJZIe0_vPdD9yQ4ClS-6XcvVUFdKqnEILd1JWq5hwTG72AiFbTs5wFO9vR-0cFrkC1mBIjHJ"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A high-contrast circular profile of a data scientist. The background features glowing data points and neural network visualizations in a dark navy void. The subject is depicted with clarity and intelligence, embodying the high-performance culture of the AI Research squad." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyfTeJo-IuX9HXz_9Z4bzoiUvJIuTw25U1W2V6hsWuyC7Eri2jvpMadJZwexbnEYPiGTnb_-KZpwsNPTBuxxQy8kKJtaGneMqGODrEdVs-3X9AV_mQnT4XllGV3nswinD-fGded5NdafeDvNmNIkB7MG7gqqPz2K7O_fvgkLR-HIJUvn7mRpvPEBzD1dAUusK60EZXWNUoX6JpC17v3BlL6dMxMLHU4_nMX6doKWZZhfo3WzTTSfxnlq8Zl8xVnoaSgKVBXV6gTQha"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A portrait-style circular avatar for an machine learning engineer. The aesthetic is clean and modern, with soft-focus glass textures and subtle indigo rim lighting. The image conveys a sense of deep focus and innovation, perfectly matching the AI-driven theme of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LdFnxsNUt6ptKugFc5BbRknOZKWToldHPmUHkRhSti-uoTfheRAKrj-fj33tgq5aM_6tECJ41gg_g-v6_d-gXJwH1B5dSrqzFT5ebUO70wAvha4lqGTzNR04TzIPndNItYEDjLa72ob786OSYajuHh57qRFNKjf9GE-YqpUtuBTnENTLJmuUYfANtyyeOZ2MR91qC2CkMrXq2Ph6Itp35qMBtgZCwz0HO4MjgB8kewtiJNNpsHyMeuSQoZHw6GTZ4hxiZwHOeTSY"/>
+<div class="w-8 h-8 rounded-full border-2 border-[#0a0a14] bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-slate-400">+1 more</div>
+</div>
+<div class="mt-md pt-md border-t border-white/5 flex justify-between items-center">
+<span class="px-3 py-1 rounded-full bg-white/5 text-slate-400 text-label-caps font-label-caps">Member</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel rounded-xl p-md flex flex-col gap-sm transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-xs">
+<h2 class="font-h3 text-h3 text-white">Mobile Dev</h2>
+<p class="font-subtitle text-subtitle text-slate-400 line-clamp-2">Crafting the portable experience of Skill Hub for iOS and Android platforms.</p>
+</div>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">group</span>
+<span>6 members</span>
+</div>
+<div class="flex -space-x-2 mt-xs">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A vibrant circular avatar for a mobile application developer. The subject is holding a glowing smartphone reflecting indigo light onto their face. The background is a dark, minimalist tech hub with sleek glass partitions, echoing the platform's futuristic design language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_wYmewsKV0s6c2BDB4gF2jiUGXzS6Lv7heDWkD2oqFp_qHTlbGvf15sgSw7u1LMsWN4LtfTXqiWu8oNnNRv7Uzc9h1tj89VulW9Uibk-95n9xRdxZrxLAjNiXLa56J00P7HN5Y5ZbbxsG3hb_PxlpiXnqoEZAELff3ciUF1hlAtx2nipc6_AbFw2RhzT60RCkTsKIR-rBazHdIWDoPgyFNGfzfHrzWPKrJwYo12eg9_D7PYcgULotHl60HMsW-yOebRYJV_cSohpU"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A sleek circular profile of a mobile UI/UX designer. The setting is a bright, modern studio with high-key lighting, contrasted against deep navy and indigo elements. The designer looks creative and professional, representing the high aesthetic standards of the Mobile Dev team." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtTGB5ed_BmugxOoyXGSZ9SarLoA1L3jXpZXLUQQkcStB3hiY_Ls_T4tjQIRYxtlj4oq0laCKy1yZlZ-hyq_hVzhGDdNxqAIRNL-n6DeGfqI0s4urTHamZqt8KE62SRx9rXBcG1tca9TkBlYEy-J08GHEfuimcv_TaUJ6WkN2Wq1_hW1C6ufG3TXELZhTQCx7T5HbtvQN7t0UZ0hS9DMg3Uz0QkNNNytGEFMP9ki0ioWPeyNK58KHNod1EaQwv4-GK1F6IBGzDZOAc"/>
+<div class="w-8 h-8 rounded-full border-2 border-[#0a0a14] bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-slate-400">+4 more</div>
+</div>
+<div class="mt-md pt-md border-t border-white/5 flex justify-between items-center">
+<span class="px-3 py-1 rounded-full bg-white/5 text-slate-400 text-label-caps font-label-caps">Member</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-panel rounded-xl p-md flex flex-col gap-sm transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-xs">
+<h2 class="font-h3 text-h3 text-white">Cloud Infrastructure</h2>
+<p class="font-subtitle text-subtitle text-slate-400 line-clamp-2">Scaling our global presence with high-availability server networks.</p>
+</div>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">group</span>
+<span>12 members</span>
+</div>
+<div class="flex -space-x-2 mt-xs">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A circular profile picture of an infrastructure engineer in a high-tech server room. The room is illuminated by blue and indigo LED lights from server racks, creating a sophisticated and powerful visual atmosphere. The subject appears calm and focused on complex network architectures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBf0eVm6n1igf0-xNwGwPXixt767Ao2FWjHLwf7vKEQkGdjll1BqM95uTdTN_ysZxUTuuSrE2TGg_7yUbHAMUv-bT9SMbq-dJQteURFrl9xeB6y0-QEAS3rOZAdAm3uVsYCn1lh25gCmelfXD78UcPYMidirM0Eidg2h9-ikTBxJ44DGonWG6z-gIa1AEnJPObSme40M8BRRQItAZldRLS-4fJOaBgF66K--f267xXGaNDj0gXN7XmqdVAqi5aUF2IiZSLCzzs-uxQ"/>
+<div class="w-8 h-8 rounded-full border-2 border-[#0a0a14] bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-slate-400">+11 more</div>
+</div>
+<div class="mt-md pt-md border-t border-white/5 flex justify-between items-center">
+<span class="px-3 py-1 rounded-full bg-white/5 text-slate-400 text-label-caps font-label-caps">Member</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass-panel rounded-xl p-md flex flex-col gap-sm transition-transform hover:scale-[1.02]">
+<div class="flex flex-col gap-xs">
+<h2 class="font-h3 text-h3 text-white">Design Systems</h2>
+<p class="font-subtitle text-subtitle text-slate-400 line-clamp-2">Maintaining the visual language and component library for all products.</p>
+</div>
+<div class="flex items-center gap-2 text-slate-400 text-sm">
+<span class="material-symbols-outlined text-base">group</span>
+<span>3 members</span>
+</div>
+<div class="flex -space-x-2 mt-xs">
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A circular profile photo of a creative lead focusing on design systems. The background is a clean, glassmorphic workspace with floating UI elements in indigo and violet. The lighting is bright and modern, emphasizing the precision and artistic vision required for maintaining a unified visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbgQ8e02xluUzkvt4OcCn2tq4-aSMRrvf8ztsqu-DYI2RgOwTUFFTJ1zhI17sx2133PVzT6kqNqCk9XDu-ObWTn3RDsujh_KfCAKpBr0Kr--gCHYPl9cM3kAlqEwQBBZJcVHwXcfPUcdu0WrDv7FPyeZJ_9RCw5Hjao024MMVt6-GimPuGpGwU9ejU7kV6bZRubVqSslK1OKUxWui8UJ2FPvngfnzjsjXnjuyVHSYZ9P07lPjm470sHBsUIUSBSTR08veo6-0tOtgc"/>
+<img alt="Avatar" class="w-8 h-8 rounded-full border-2 border-[#0a0a14]" data-alt="A minimalist circular portrait of a visual designer. The background features a subtle gradient of deep navy and indigo. The subject is set against a backdrop of organized geometric patterns, reflecting the structured nature of design systems and high-end tech interfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO2Lq727f-roVeR5GBqNzv-8J2j5v90SXpsRG4aERkgoDgutieVzJ2BQzvPz-zSur6IdFF3kwFaxiYHgerTh0Rw6ZYbJjvLB05nI7rPPZTkDGQXQvfErWH0Ps5F6GD0JqDAKt-VDbAWMujXjP5CXyNuCYTMgZ9buChZDpZaQN5YTnhxedAnJoD-bajOVa189NYx5RNTQYFcJv6ANJgEAcTNH8jB5v9DpTJGX9ZfXcbW3zV-GCnJMCcO2O22ZqTJLyx-amp2AXFsER_"/>
+<div class="w-8 h-8 rounded-full border-2 border-[#0a0a14] bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-slate-400">+1 more</div>
+</div>
+<div class="mt-md pt-md border-t border-white/5 flex justify-between items-center">
+<span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-label-caps font-label-caps">Owner</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer">chevron_right</span>
+</div>
+</div>
+<!-- Empty State Slot -->
+<div class="border-2 border-dashed border-white/10 rounded-xl p-md flex flex-col items-center justify-center gap-xs cursor-pointer hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all min-h-[220px]">
+<span class="material-symbols-outlined text-slate-500 text-3xl">add_circle</span>
+<span class="font-subtitle text-subtitle text-slate-400">Add a new team</span>
+</div>
+</div>
+</main>
+<!-- Mobile BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full bg-[#0a0a14]/80 backdrop-blur-md border-t border-white/10 flex justify-around items-center h-16 z-50">
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center text-indigo-400 font-bold" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px]">Teams</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-[10px]">Skills</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">Settings</span>
+</a>
+</nav>
+</body></html>

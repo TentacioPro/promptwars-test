@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skill Hub - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#c7c4d8",
+            "on-primary-container": "#1b0091",
+            "tertiary-container": "#db761f",
+            "surface": "#051424",
+            "on-primary-fixed": "#100069",
+            "primary-fixed": "#e3dfff",
+            "on-error": "#690005",
+            "on-tertiary-container": "#461f00",
+            "inverse-surface": "#d4e4fa",
+            "tertiary": "#ffb785",
+            "on-primary": "#2000a4",
+            "surface-container-highest": "#273647",
+            "on-secondary": "#1c00a6",
+            "surface-container-lowest": "#010f1f",
+            "on-secondary-container": "#b3b1ff",
+            "surface-dim": "#051424",
+            "tertiary-fixed": "#ffdcc6",
+            "tertiary-fixed-dim": "#ffb785",
+            "inverse-on-surface": "#233143",
+            "on-tertiary-fixed": "#301400",
+            "on-tertiary": "#502500",
+            "surface-tint": "#c4c0ff",
+            "primary-container": "#8781ff",
+            "surface-bright": "#2c3a4c",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#464555",
+            "primary": "#c4c0ff",
+            "surface-container": "#122131",
+            "on-tertiary-fixed-variant": "#713700",
+            "primary-fixed-dim": "#c4c0ff",
+            "on-primary-fixed-variant": "#3622ca",
+            "error-container": "#93000a",
+            "secondary": "#c3c0ff",
+            "error": "#ffb4ab",
+            "on-secondary-fixed-variant": "#3529c2",
+            "secondary-container": "#372cc5",
+            "on-background": "#d4e4fa",
+            "secondary-fixed-dim": "#c3c0ff",
+            "outline": "#918fa1",
+            "secondary-fixed": "#e2dfff",
+            "on-surface": "#d4e4fa",
+            "on-secondary-fixed": "#0e006a",
+            "surface-variant": "#273647",
+            "inverse-primary": "#4f44e2",
+            "background": "#051424",
+            "surface-container-high": "#1c2b3c",
+            "surface-container-low": "#0d1c2d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "base": "4px",
+            "xs": "8px",
+            "md": "24px",
+            "xl": "48px",
+            "sm": "16px",
+            "lg": "32px",
+            "container-margin": "24px",
+            "gutter": "20px"
+          },
+          "fontFamily": {
+            "h2": ["Inter"],
+            "subtitle": ["Inter"],
+            "label-caps": ["Inter"],
+            "body-lg": ["Inter"],
+            "h1": ["Inter"],
+            "h3": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "h2": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "subtitle": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "h3": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .bg-void {
+      background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a14 100%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    }
+    .indigo-gradient {
+      background: linear-gradient(135deg, #6c63ff 0%, #5a54e6 100%);
+    }
+    .glow-indigo {
+      box-shadow: 0 0 20px rgba(108, 99, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-void text-on-surface font-body-md min-h-screen flex items-center justify-center p-container-margin overflow-hidden relative">
+<!-- Background Ambient Glows -->
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#6c63ff]/10 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#5a54e6]/10 blur-[120px] rounded-full pointer-events-none"></div>
+<!-- Login Main Container -->
+<main class="w-full max-w-[440px] relative z-10">
+<!-- Glassmorphism Card -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-lg items-center">
+<!-- 1. Indigo Lightning Bolt Icon -->
+<div class="w-14 h-14 rounded-full bg-[#6c63ff]/10 flex items-center justify-center glow-indigo border border-[#6c63ff]/20">
+<span class="material-symbols-outlined text-[#6c63ff] !text-[32px]" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<!-- 2 & 3. Header -->
+<div class="text-center space-y-xs">
+<h1 class="font-h1 text-h1 text-white">Sign In</h1>
+<p class="font-subtitle text-subtitle text-on-surface-variant">Welcome back to Skill Hub</p>
+</div>
+<!-- Form Section -->
+<form class="w-full space-y-sm">
+<!-- 4. Email Input -->
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant px-base">EMAIL ADDRESS</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant/60 group-focus-within:text-[#6c63ff] transition-colors" data-icon="mail">mail</span>
+<input class="w-full h-12 pl-xl pr-md bg-white/5 border border-white/10 rounded-xl font-body-md text-white placeholder:text-white/40 focus:ring-2 focus:ring-[#6c63ff]/50 focus:border-[#6c63ff] transition-all outline-none" placeholder="you@example.com" type="email"/>
+</div>
+</div>
+<!-- 5. Password Input -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center px-base">
+<label class="font-label-caps text-label-caps text-on-surface-variant">PASSWORD</label>
+<a class="font-subtitle text-subtitle text-[#6c63ff] hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant/60 group-focus-within:text-[#6c63ff] transition-colors" data-icon="lock">lock</span>
+<input class="w-full h-12 pl-xl pr-md bg-white/5 border border-white/10 rounded-xl font-body-md text-white placeholder:text-white/40 focus:ring-2 focus:ring-[#6c63ff]/50 focus:border-[#6c63ff] transition-all outline-none" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- 6. Sign In Button -->
+<button class="w-full h-12 indigo-gradient text-white font-body-md font-semibold rounded-xl hover:brightness-110 active:scale-[0.98] transition-all shadow-lg shadow-[#6c63ff]/20" type="submit">
+          Sign In
+        </button>
+</form>
+<!-- 7. Divider -->
+<div class="w-full flex items-center gap-md">
+<div class="h-px flex-1 bg-white/10"></div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/60">OR</span>
+<div class="h-px flex-1 bg-white/10"></div>
+</div>
+<!-- 8. Continue with Google -->
+<button class="w-full h-12 bg-white/5 border border-white/10 rounded-xl font-body-md text-white flex items-center justify-center gap-sm hover:bg-white/10 hover:border-[#6c63ff]/50 transition-all active:scale-[0.98]">
+<img alt="Google Logo" class="w-5 h-5 grayscale opacity-80" data-alt="The official Google logo depicted in a clean, minimalist style with high contrast. The icon is isolated on a transparent background, following modern flat design principles. It maintains accurate proportions and signature colors, though desaturated to fit the high-end dark mode aesthetic of the surrounding skill hub interface. The lighting is neutral and even." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_FzjbsI_E7cFO6VmLrNmhezgaLUjt27jmL6giV2jM9QkTskMoDS4Vx4eZewFdKyxOtMdsH9YNYKOczADG9iVetLDBwUPK9r_cDHYUfuoBv9wDkuD58uv0ZkJVf9xutZq5-EbIfk65PaoSv89j30HR1TAKnvMmTqRwn62cogtKHN9Aofal07xIOGCSJw-KpOjIC4U0Mrddnu-kBjaYRF8dfZDiwFoTwsOAwqHeZ3cvJDuewO-yZmeev0GijJkCE7BAtm9nSWfk4Xtp"/>
+        Continue with Google
+      </button>
+<!-- 9. Footer -->
+<p class="font-subtitle text-subtitle text-on-surface-variant">
+        Don't have an account? 
+        <a class="text-[#6c63ff] font-semibold hover:underline" href="#">Register</a>
+</p>
+</div>
+<!-- Decorative Illustration Background Element -->
+<div class="absolute -z-10 -bottom-xl -left-xl opacity-20 pointer-events-none">
+<div class="w-64 h-64 border-[1px] border-[#6c63ff]/30 rounded-full flex items-center justify-center">
+<div class="w-48 h-48 border-[1px] border-[#6c63ff]/20 rounded-full flex items-center justify-center">
+<div class="w-32 h-32 border-[1px] border-[#6c63ff]/10 rounded-full"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Image Prompt Placeholder for Hero/Style Reference -->
+<div class="hidden">
+<img data-alt="A highly sophisticated cinematic background for a technology login screen. The scene features deep indigo and dark navy flowing ethereal gradients that look like nebulae in deep space. Subtle digital artifacts, glowing micro-particles, and faint grid lines emerge from the shadows, suggesting an AI-powered neural network. The lighting is moody and low-key, with soft glows emanating from the corners to create a profound sense of depth and advanced technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRXqgqm83fJU_tYa3tiC9oNWrhs4MJupXk3wtgKif5dAVh3T-lXvI3pK-ofLGcjK68mw5XhdYt1xIjbXAcBbPtnohuI7QhRn6iD-NEi7TahHJ2-BnMwOSRDytawMGpQn15MKkICafBgUDZZd5vVfYMuBw2hz6FiPxZNG7W77WKEyMN_6P0nGknpmEt91KIm5nNeZnYFZpeu0_6n_BafTgI_sAAIpU3F0VzNds_9JMTIwqpWJLW-tK54dtuPpL4NgbwUp9uS1nGFNrp"/>
+</div>
+</body></html>
